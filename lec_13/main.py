@@ -60,12 +60,21 @@ def multiprocessing_word_count(filename, num_processes=4):
 
 def main():
     filename = 'large_text_file.txt'
+    
+    with open(filename, "w") as f:
+    lorem = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. " \
+            "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. "
+    for _ in range(1000):
+        f.write(lorem)
+        
     start_time = time.time()
     seq = count_words(filename)
     print(f"Sequential: {time.time() - start_time:.4f}s")
+    
     start_time = time.time()
     thread = multithreaded_word_count(filename)
     print(f"Multithreading: {time.time() - start_time:.4f}s")
+    
     start_time = time.time()
     process = multiprocessing_word_count(filename)
     print(f"Multiprocessing: {time.time() - start_time:.4f}s")
