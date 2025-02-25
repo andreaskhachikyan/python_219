@@ -158,6 +158,7 @@ class NimAI():
         If multiple actions have the same Q-value, any of those
         options is an acceptable return value.
         """
+
         actions = Nim.available_actions(state)
         moves = []
         for action in actions:
